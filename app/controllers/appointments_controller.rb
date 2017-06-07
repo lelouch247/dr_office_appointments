@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
       if @appointment.save
-        redirect_to :back
+        redirect_to doctors_path
       else
         render :new
       end

@@ -1,0 +1,53 @@
+<%= form_for(patient) do |f| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.select :gender, ['Male', 'Female', 'Other'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :race %>
+    <%= f.text_field :race %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.text_field :age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :insurance %>
+    <%= f.check_box :insurance %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <div>
+  <%= link_to 'Back', :back %>
+</div>
+<% end %>

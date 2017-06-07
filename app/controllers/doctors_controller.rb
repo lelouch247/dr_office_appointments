@@ -3,6 +3,7 @@ class DoctorsController < ApplicationController
 
   def index
     @doctors = Doctor.all
+    @patients = Patient.all
   end
 
   def new
@@ -13,10 +14,11 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      redirect_to @doctor
+      redirect_to doctors_path
     else
       render :new
     end
+
   end
 
   def show
@@ -27,10 +29,13 @@ class DoctorsController < ApplicationController
   end
 
   def update
+
     if @doctor.update(doctor_params)
-      redirect_to @doctor
+      redirect_to doctors_path
     else
       render :edit
+    end
+
   end
 
   def destroy

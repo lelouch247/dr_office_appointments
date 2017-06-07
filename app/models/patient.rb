@@ -1,6 +1,11 @@
 class Patient < ApplicationRecord
-  validates_presence_of :name, :age, :race, :gender, :insurance
+  validates_presence_of :first_name, :last_name, :age, :race, :gender, :insurance
 
   has_many :appointments, dependent: :destroy
   has_one :doctor, through: :appointments
+
+  def full_name
+    "#{first_name} #{last_name}"
+
+  end
 end

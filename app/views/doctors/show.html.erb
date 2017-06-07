@@ -1,2 +1,23 @@
-<h1>Doctors#show</h1>
-<p>Find me in app/views/doctors/show.html.erb</p>
+<h1> Doctor: <%= @doctor.full_name %> - <%= @doctor.gender %> </h1>
+
+<% if @doctor.patients.empty? %>
+  <h5>No Patients Found</h5>
+
+<% else %>
+
+  <h5>Patients</h5>
+  <% @doctor.patients.each do |patient| %>
+    <% @doctor.appointments.each do |appointment| %>
+    <li>
+      <%= patient.full_name %> at <%= appointment.time %>
+      <%= link_to 'Remove', patient_path(patient), method: :delete, data: {confirm: 'Really remove this ingredient?'} %>
+    </li>
+    <% end %>
+  <% end %>
+
+
+<% end %>
+
+<%= link_to 'All Doctors', doctors_path %> |
+<%= link_to 'Edit', edit_doctor_path %> |
+<%= link_to 'Make An Appointment', new_appointment_path %>
