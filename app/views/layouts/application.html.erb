@@ -5,10 +5,29 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Doctors Office</a>
+        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to 'Doctors', doctors_path %></li>
+          <li><%= link_to 'Patients', patients_path %></li>
+          <li><%= link_to 'Appointments', new_appointment_path %></li>
+        </ul>
+        <ul class="side-nav" id="mobile">
+          <li><%= link_to 'Doctors', doctors_path %></li>
+          <li><%= link_to 'Patients', patients_path %></li>
+          <li><%= link_to 'Appointments', new_appointment_path %></li>
+        </ul>
+      </div>
+    </nav
+    <div class="container">
+    </div>
     <%= yield %>
   </body>
 </html>
