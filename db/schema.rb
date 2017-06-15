@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20170613211719) do
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "patients", force: :cascade do |t|

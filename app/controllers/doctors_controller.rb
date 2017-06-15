@@ -2,17 +2,15 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   def index
-    @doctors = Doctor.all
-    @patients = Patient.all
+    @doctors = current_user.doctors.all
   end
 
   def new
-    @doctor = Doctor.new
+    @doctor = current_user.doctors.new
   end
 
   def create
-    @doctor = Doctor.new(doctor_params)
-
+    @doctor = current_user.doctors.new(doctor_params)
     if @doctor.save
       redirect_to doctors_path
     else
@@ -45,10 +43,11 @@ class DoctorsController < ApplicationController
 
   private
     def set_doctor
-      @doctor = Doctor.find(params[:id])
+      @doctor = current_user.doctors.find(params[:id])
     end
 
     def doctor_params
+      binding.pry
       params.require(:doctor).permit(:first_name, :last_name, :gender)
     end
 
